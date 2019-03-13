@@ -17,6 +17,7 @@ class CreateClientProductsTable extends Migration
             $table->bigIncrements('id');
             $table->biginteger('product_id')->unsigned()->nullable();
             $table->biginteger('client_id')->unsigned()->nullable();
+            $table->biginteger('quantity')->unsigned()->nullable();
             $table->timestamps();
             
         });

@@ -9,10 +9,17 @@ use App\ClientProduct;
 use Auth;
 class ProductController extends Controller
 {
+    /**
+     * add new product
+     */
     public function create()
     {
         return view('products.add');
     }
+    /**
+     * 
+     * save new product
+     */
     public function store(Request $request)
     {
       $this->validate($request, [ 

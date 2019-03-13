@@ -9,11 +9,17 @@ use Auth;
 
 class ProviderController extends Controller
 {
+  /**
+   * 
+   * add new provider
+   */
     public function create()
     {
         return view('provider.register');
     }
-
+/**
+ * save new provider
+ */
     public function registerProvider(Request $request)
     {
       $this->validate($request, [
@@ -35,7 +41,10 @@ class ProviderController extends Controller
     {
         return view('provider.login');
     }
-
+/**
+ * 
+ * login provider checker
+ */
     public function providerAuth(Request $request)
    {
            $this->validate($request, [
@@ -52,12 +61,18 @@ class ProviderController extends Controller
          return redirect()->back()->with('warning', 'Invalid Email or Password');
       }
     }
-
+/**
+ * 
+ * provider homepage
+ */
   public function home()
   { 
     return view('provider');
   }
-
+/**
+ * 
+ * provider logout
+ */
   public function logout()
   {
     Auth::guard('admin')->logout();

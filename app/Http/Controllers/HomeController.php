@@ -28,8 +28,16 @@ class HomeController extends Controller
         $data['products']=Product::get();
         return view('home',$data);
     }
+    /**
+     * 
+     * Add client product select to cart
+     */
     public function addtocart($product_id)
     {
+        $ifexist=ClientProduct::where('product_id',$product_id)
+        ->where('client_id',Auth::user()->id)->first();
+        if( $ifexist)
+        return redirect()->back()->with('error', 'Product added before'); 
         $created=ClientProduct::create([
             'product_id'=>$product_id,
             'client_id'=>Auth::user()->id
